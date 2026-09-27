@@ -20,13 +20,13 @@ export default function ContactPage() {
   useReveal()
 
   return (
-    <div className="pt-16 bg-[#0b0f19] min-h-screen">
+    <div className="pt-16 bg-[#05070a] min-h-screen">
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div data-reveal className="text-center mb-16">
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-cyan-400">Contact</span>
+            <span className="label-tech">// open channel</span>
             <h1 className="text-4xl sm:text-5xl font-space font-bold text-white mt-3">
-              Get In <span className="text-cyan-400">Touch</span>
+              Get In <span className="text-[#3ce88b]">Touch</span>
             </h1>
             <p className="mt-4 text-gray-400 max-w-xl mx-auto">
               Have a question, want to collaborate, or interested in joining? Reach out to us.
@@ -35,54 +35,58 @@ export default function ContactPage() {
 
           <div className="grid md:grid-cols-2 gap-10">
             <div data-reveal>
-              <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+              <form className="terminal-frame p-5 sm:p-6 space-y-5" onSubmit={(e) => e.preventDefault()}>
+                <div className="label-tech">transmit_message.sh</div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-1.5">Name</label>
+                  <label htmlFor="contact-name" className="label-tech block mb-2">Name</label>
                   <input
+                    id="contact-name"
                     type="text"
                     placeholder="Your full name"
-                    className="w-full px-4 py-3 bg-[#131a2b] border-2 border-[#1e2d45] rounded-lg text-white placeholder-gray-600 outline-none transition-colors focus:border-cyan-500"
+                    className="term-input normal-case tracking-normal text-white"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-1.5">Email</label>
+                  <label htmlFor="contact-email" className="label-tech block mb-2">Email</label>
                   <input
+                    id="contact-email"
                     type="email"
                     placeholder="your@email.com"
-                    className="w-full px-4 py-3 bg-[#131a2b] border-2 border-[#1e2d45] rounded-lg text-white placeholder-gray-600 outline-none transition-colors focus:border-cyan-500"
+                    className="term-input normal-case tracking-normal text-white"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-1.5">Message</label>
+                  <label htmlFor="contact-message" className="label-tech block mb-2">Message</label>
                   <textarea
+                    id="contact-message"
                     rows="5"
                     placeholder="Write your message here..."
-                    className="w-full px-4 py-3 bg-[#131a2b] border-2 border-[#1e2d45] rounded-lg text-white placeholder-gray-600 outline-none transition-colors focus:border-cyan-500 resize-none"
+                    className="term-input normal-case tracking-normal text-white resize-none"
                   ></textarea>
                 </div>
                 <button
                   type="submit"
-                  className="px-8 py-3 font-bold text-black bg-cyan-500 rounded-lg hover:bg-cyan-400 transition-colors cursor-pointer w-full sm:w-auto"
+                  className="btn-term w-full sm:w-auto"
                 >
-                  <i className="fas fa-paper-plane mr-2"></i> Send Message
+                  <i className="fas fa-paper-plane"></i> Send Message
                 </button>
               </form>
             </div>
 
             <div data-reveal className="space-y-6">
-              <div className="p-6 bg-[#131a2b] border-2 border-[#1e2d45] rounded-lg">
+              <div className="terminal-frame p-6">
                 <div className="flex items-center gap-4 mb-5">
-                  <div className="w-12 h-12 rounded-lg bg-cyan-500/10 border-2 border-cyan-500/30 flex items-center justify-center flex-shrink-0">
-                    <i className="fas fa-envelope text-lg text-cyan-400"></i>
+                  <div className="w-12 h-12 bg-[#3ce88b]/10 border border-[#3ce88b]/30 flex items-center justify-center flex-shrink-0">
+                    <i className="fas fa-envelope text-lg text-[#3ce88b]"></i>
                   </div>
                   <div>
                     <p className="text-white font-semibold text-sm">Email Us</p>
-                    <a href="mailto:css@uet.edu.pk" className="text-gray-400 hover:text-cyan-400 transition-colors">css@uet.edu.pk</a>
+                    <a href="mailto:css@uet.edu.pk" className="text-gray-400 hover:text-[#3ce88b] transition-colors">css@uet.edu.pk</a>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-cyan-500/10 border-2 border-cyan-500/30 flex items-center justify-center flex-shrink-0">
-                    <i className="fas fa-location-dot text-lg text-cyan-400"></i>
+                  <div className="w-12 h-12 bg-[#3ce88b]/10 border border-[#3ce88b]/30 flex items-center justify-center flex-shrink-0">
+                    <i className="fas fa-location-dot text-lg text-[#3ce88b]"></i>
                   </div>
                   <div>
                     <p className="text-white font-semibold text-sm">Visit Us</p>
@@ -91,8 +95,8 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="p-6 bg-[#131a2b] border-2 border-[#1e2d45] rounded-lg">
-                <p className="text-white font-semibold mb-4">Follow Us</p>
+              <div className="terminal-frame p-6">
+                <p className="label-tech mb-4">Follow us</p>
                 <div className="flex gap-3">
                   {[
                     { icon: 'fa-discord', href: '#' },
@@ -106,7 +110,7 @@ export default function ContactPage() {
                       href={s.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-11 h-11 rounded-lg bg-[#0b0f19] border-2 border-[#1e2d45] flex items-center justify-center text-gray-500 hover:text-cyan-400 hover:border-cyan-500/40 transition-colors"
+                      className="w-11 h-11 bg-[#05070a] border border-[#14313a] flex items-center justify-center text-gray-500 hover:text-[#3ce88b] hover:border-[#3ce88b]/40 transition-colors"
                     >
                       <i className={`fab ${s.icon}`}></i>
                     </a>
@@ -114,12 +118,12 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="p-6 bg-[#131a2b] border-2 border-[#1e2d45] rounded-lg">
+              <div className="terminal-frame p-6">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="w-8 h-8 rounded-lg bg-cyan-500 flex items-center justify-center">
-                    <i className="fas fa-shield-halved text-black text-xs"></i>
+                  <span className="w-8 h-8 bg-[#3ce88b] flex items-center justify-center">
+                    <i className="fas fa-shield-halved text-[#04120b] text-xs"></i>
                   </span>
-                  <span className="text-white font-space font-bold text-lg">CSS UET</span>
+                  <span className="text-white font-mono font-bold text-lg tracking-[0.06em]">CSS::UET</span>
                 </div>
                 <p className="text-gray-500 text-sm leading-relaxed">
                   "Securing Tomorrow, Today." &mdash; Join us in building a safer digital world.

@@ -50,33 +50,42 @@ function InfoSlider() {
   }, [])
 
   return (
-    <div className="relative max-w-3xl mx-auto">
-      <div className="overflow-hidden rounded-lg border-2 border-[#1e2d45] bg-[#131a2b]">
+    <div className="relative max-w-3xl mx-auto terminal-frame">
+      <div className="terminal-bar">
+        <span className="truncate">sys_feed.log // css::uet</span>
+        <span className="shrink-0">
+          {String(active + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
+        </span>
+      </div>
+
+      <div className="overflow-hidden">
         <div
           className="flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${active * 100}%)` }}
         >
           {slides.map((s, i) => (
-            <div key={i} className="min-w-full flex items-start gap-5 p-6 sm:p-8">
-              <div className="w-14 h-14 rounded-lg bg-cyan-500/10 border-2 border-cyan-500/30 flex items-center justify-center flex-shrink-0">
-                <i className={`fas ${s.icon} text-xl text-cyan-400`}></i>
+            <div key={i} className="min-w-full flex items-start gap-4 sm:gap-5 p-5 sm:p-7">
+              <div className="w-11 h-11 sm:w-14 sm:h-14 border border-[#3ce88b]/35 bg-[#3ce88b]/10 flex items-center justify-center flex-shrink-0">
+                <i className={`fas ${s.icon} text-lg sm:text-xl text-[#3ce88b]`}></i>
               </div>
-              <div>
-                <h3 className="text-white font-space font-bold text-lg sm:text-xl">{s.title}</h3>
-                <p className="text-gray-400 text-sm sm:text-base mt-2 leading-relaxed">{s.desc}</p>
+              <div className="min-w-0">
+                <div className="label-tech mb-1.5">feed_{String(i + 1).padStart(2, '0')}</div>
+                <h3 className="text-white font-space font-bold text-base sm:text-xl break-words">{s.title}</h3>
+                <p className="text-gray-400 text-sm sm:text-[15px] mt-2 leading-relaxed">{s.desc}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="flex justify-center gap-2 mt-4">
+      <div className="flex justify-center gap-2 py-4 border-t border-[#14313a]">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => setActive(i)}
-            className={`w-2.5 h-2.5 rounded-full transition-all ${
-              i === active ? 'bg-cyan-400 w-6' : 'bg-[#1e2d45] hover:bg-cyan-500/40'
+            aria-label={`Show update ${i + 1}`}
+            className={`h-2.5 transition-all ${
+              i === active ? 'bg-[#3ce88b] w-6' : 'bg-[#14313a] hover:bg-[#3ce88b]/40 w-2.5'
             }`}
           />
         ))}
@@ -91,12 +100,13 @@ export default function HomePage() {
 
   return (
     <>
-      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0b0f19] pt-16">
+      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#05070a] pt-16">
         <HeroScene containerRef={heroRef} />
 
         <div className="relative z-10 text-center px-4 max-w-4xl">
           <div data-reveal>
-            <span className="inline-block px-3 sm:px-4 py-1.5 mb-6 text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-cyan-400 border-2 border-cyan-500/40 rounded bg-cyan-500/5">
+            <span className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 mb-6 font-mono text-[10px] sm:text-[11px] font-medium tracking-[0.2em] uppercase text-[#3ce88b] border border-[#3ce88b]/40 bg-[#3ce88b]/5">
+              <span className="status-dot"></span>
               <span className="hidden sm:inline">University of Engineering &amp; Technology, Lahore</span>
               <span className="sm:hidden">UET Lahore</span>
             </span>
@@ -104,7 +114,7 @@ export default function HomePage() {
 
           <h1 data-reveal className="font-space text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.1] tracking-tight">
             <span className="text-white">Securing </span>
-            <span className="text-cyan-400">Tomorrow,</span>
+            <span className="text-[#3ce88b] glitch-hover">Tomorrow,</span>
             <br />
             <span className="text-white">Today.</span>
           </h1>
@@ -113,44 +123,45 @@ export default function HomePage() {
             Empowering the next generation of cybersecurity professionals through hands-on workshops, CTF competitions, and industry collaboration.
           </p>
 
-          <div data-reveal className="mt-10 flex flex-wrap justify-center gap-4">
-            <Link
-              to="/contact"
-              className="px-8 py-3.5 font-bold text-black bg-cyan-500 rounded hover:bg-cyan-400 transition-colors tracking-wide text-sm sm:text-base"
-            >
-              Join Society
+          <div data-reveal className="mt-7 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-gray-500 flex flex-wrap justify-center gap-x-5 gap-y-1">
+            <span>node: uet-lhr</span>
+            <span className="text-[#1f9e60]">system_status: online</span>
+            <span className="text-[#1f9e60]">network: secure</span>
+          </div>
+
+          <div data-reveal className="mt-8 flex flex-wrap justify-center gap-4">
+            <Link to="/contact" className="btn-term">
+              <span className="opacity-60">&gt;</span> Join Society
             </Link>
-            <Link
-              to="/events"
-              className="px-8 py-3.5 font-bold text-cyan-400 border-2 border-cyan-500/50 rounded hover:bg-cyan-500/10 transition-colors tracking-wide text-sm sm:text-base"
-            >
+            <Link to="/events" className="btn-ghost">
               Upcoming Events
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="py-10 px-4 bg-[#0b0f19] border-t border-b border-[#1e2d45]">
-        <div className="max-w-7xl mx-auto flex justify-center gap-10 sm:gap-20">
+      <section className="py-10 px-4 bg-[#05070a] border-t border-b border-[#14313a]">
+        <div className="max-w-7xl mx-auto flex justify-center gap-8 sm:gap-20 flex-wrap">
           {[
             { num: '50+', label: 'Active Members' },
             { num: '10+', label: 'Workshops' },
             { num: '6', label: 'CTF Events' },
             { num: '3+', label: 'Partners' },
           ].map((s, i) => (
-            <div key={s.label} data-reveal className="text-center" style={{ transitionDelay: `${i * 200}ms` }}>
-              <div className="text-2xl sm:text-3xl font-bold text-cyan-400">{s.num}</div>
-              <div className="text-[10px] sm:text-xs text-gray-500 mt-1 uppercase tracking-widest font-medium">{s.label}</div>
+            <div key={s.label} data-reveal className="text-center min-w-[64px]" style={{ transitionDelay: `${i * 200}ms` }}>
+              <div className="font-mono text-2xl sm:text-3xl font-bold text-[#3ce88b]">{s.num}</div>
+              <div className="font-mono text-[9px] sm:text-[10px] text-gray-500 mt-1.5 uppercase tracking-[0.18em]">{s.label}</div>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="py-20 px-4 bg-[#0b0f19]">
+      <section className="py-20 px-4 bg-[#05070a]">
         <div className="max-w-7xl mx-auto">
           <div data-reveal className="text-center mb-14">
-            <h2 className="text-3xl sm:text-4xl font-space font-bold text-white">
-              Highlights & <span className="text-cyan-400">Updates</span>
+            <span className="label-tech">// live feed</span>
+            <h2 className="text-3xl sm:text-4xl font-space font-bold text-white mt-3">
+              Highlights &amp; <span className="text-[#3ce88b]">Updates</span>
             </h2>
             <p className="mt-3 text-gray-400 max-w-xl mx-auto">
               Stay in the loop with our latest achievements, upcoming events, and weekly activities.
@@ -161,11 +172,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 px-4 bg-[#0b0f19] border-t border-[#1e2d45]">
+      <section className="py-20 px-4 bg-[#05070a] border-t border-[#14313a]">
         <div className="max-w-7xl mx-auto text-center">
           <div data-reveal>
-            <h2 className="text-3xl sm:text-4xl font-space font-bold text-white">
-              Why Join <span className="text-cyan-400">CSS UET</span>?
+            <span className="label-tech">// why us</span>
+            <h2 className="text-3xl sm:text-4xl font-space font-bold text-white mt-3">
+              Why Join <span className="text-[#3ce88b]">CSS UET</span>?
             </h2>
             <p className="mt-3 text-gray-400 max-w-xl mx-auto">
               What you gain as part of the Cyber Security Society at UET Lahore.
@@ -178,9 +190,12 @@ export default function HomePage() {
               { icon: faUsers, title: 'Workshops & Talks', desc: 'Learn from industry experts through monthly workshops on ethical hacking, cryptography, and network security.' },
               { icon: 'fa-handshake', title: 'Career Growth', desc: 'Connect with top infosec firms, gain internship opportunities, and build your professional network.' },
             ].map((f, i) => (
-              <div key={f.title} data-reveal className="p-8 bg-[#131a2b] border-2 border-[#1e2d45] rounded-lg text-left hover:border-cyan-500/40 transition-colors" style={{ transitionDelay: `${i * 150}ms` }}>
-                <div className="w-12 h-12 rounded bg-cyan-500/10 border-2 border-cyan-500/30 flex items-center justify-center mb-5">
-                  <i className={`fas ${f.icon} text-lg text-cyan-400`}></i>
+              <div key={f.title} data-reveal className="terminal-frame p-6 sm:p-8 text-left hover:border-[#3ce88b]/45 transition-colors" style={{ transitionDelay: `${i * 150}ms` }}>
+                <div className="flex items-center justify-between mb-5">
+                  <div className="w-11 h-11 border border-[#3ce88b]/35 bg-[#3ce88b]/10 flex items-center justify-center">
+                    <i className={`fas ${f.icon} text-lg text-[#3ce88b]`}></i>
+                  </div>
+                  <span className="label-tech">mod_{String(i + 1).padStart(2, '0')}</span>
                 </div>
                 <h3 className="text-white font-space font-bold text-lg mb-2">{f.title}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">{f.desc}</p>
