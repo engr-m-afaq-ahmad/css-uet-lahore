@@ -230,7 +230,7 @@ export default function VerifyCertificatePage() {
                   if (error) setError('')
                 }}
                 className="term-input"
-                placeholder="CSS-2026-XXXX  /  EH-067"
+                placeholder="CSS-2026-XXXX  /  EH-000"
                 autoComplete="off"
                 autoCapitalize="characters"
                 spellCheck="false"
