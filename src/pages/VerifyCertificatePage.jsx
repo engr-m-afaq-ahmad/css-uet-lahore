@@ -50,10 +50,10 @@ function useReveal() {
 
 function StatusLine({ status, error }) {
   const map = {
-    [STATUS.IDLE]: { label: 'WAITING FOR INPUT', tone: 'text-[#f5c542]', dot: 'is-amber' },
-    [STATUS.VERIFYING]: { label: 'VERIFYING...', tone: 'text-[#f5c542]', dot: 'is-amber' },
-    [STATUS.VERIFIED]: { label: 'CERTIFICATE VERIFIED', tone: 'text-[#3ce88b]', dot: '' },
-    [STATUS.INVALID]: { label: 'RECORD NOT FOUND', tone: 'text-[#ff5f56]', dot: 'is-red' },
+    [STATUS.IDLE]: { label: 'WAITING FOR INPUT', tone: 'text-[#dfa426]', dot: 'is-amber' },
+    [STATUS.VERIFYING]: { label: 'VERIFYING...', tone: 'text-[#dfa426]', dot: 'is-amber' },
+    [STATUS.VERIFIED]: { label: 'CERTIFICATE VERIFIED', tone: 'text-[#00ff41]', dot: '' },
+    [STATUS.INVALID]: { label: 'RECORD NOT FOUND', tone: 'text-[#ff4d4d]', dot: 'is-red' },
   }
   const current = map[status] ?? map[STATUS.IDLE]
 
@@ -64,7 +64,7 @@ function StatusLine({ status, error }) {
         System status:
       </span>
       <span className={current.tone}>{current.label}</span>
-      {error && <span className="text-[#ff5f56] normal-case tracking-normal break-words">{error}</span>}
+      {error && <span className="text-[#ff4d4d] normal-case tracking-normal break-words">{error}</span>}
     </div>
   )
 }
@@ -76,13 +76,13 @@ function VerifiedBadge() {
         <path
           className="check-draw"
           d="M10 25 L20 35 L38 13"
-          stroke="#3ce88b"
+          stroke="#00ff41"
           strokeWidth="5"
           strokeLinecap="square"
           strokeLinejoin="miter"
         />
       </svg>
-      <div className="mt-2 font-mono text-[13px] font-bold tracking-[0.24em] text-[#3ce88b] subtle-glitch">
+      <div className="mt-2 font-mono text-[13px] font-bold tracking-[0.24em] text-[#00ff41] subtle-glitch">
         VERIFIED
       </div>
     </div>
@@ -92,13 +92,13 @@ function VerifiedBadge() {
 function RecordRow({ label, value, highlight = false, delay = 0 }) {
   return (
     <div
-      className="row-in grid grid-cols-[84px_1fr] sm:grid-cols-[110px_1fr] gap-x-3 sm:gap-x-5 items-start px-4 sm:px-6 py-3 border-b border-[#14313a]/50 last:border-b-0"
+      className="row-in grid grid-cols-[84px_1fr] sm:grid-cols-[110px_1fr] gap-x-3 sm:gap-x-5 items-start px-4 sm:px-6 py-3 border-b border-[#0a3a55]/50 last:border-b-0"
       style={{ animationDelay: `${delay}ms` }}
     >
       <span className="label-tech pt-0.5">{label}</span>
       <span
         className={`font-mono text-[12.5px] sm:text-[14px] leading-relaxed break-words ${
-          highlight ? 'text-[#3ce88b] font-bold' : 'text-white'
+          highlight ? 'text-[#00ff41] font-bold' : 'text-white'
         }`}
       >
         {value}
@@ -178,16 +178,23 @@ export default function VerifyCertificatePage() {
   const showResult = status === STATUS.VERIFIED || status === STATUS.INVALID
 
   return (
-    <div className="pt-16 bg-[#05070a] min-h-screen">
+    <div className="pt-16 bg-[#001a33] min-h-screen">
       <section className="py-12 sm:py-16 lg:py-20 px-4">
         <div className="max-w-3xl mx-auto">
 
           <div data-reveal className="text-center mb-8 sm:mb-10">
-            <span className="text-xs font-mono font-semibold tracking-[0.24em] uppercase text-[#3ce88b]">
+            <img
+              src="/logo-sm.png"
+              alt="Cyber Security Society — UET Lahore emblem"
+              width="72"
+              height="72"
+              className="w-16 h-16 sm:w-[72px] sm:h-[72px] mx-auto object-cover border border-[#00cfff]/50 shadow-[0_0_32px_rgba(0,207,255,0.35)] mb-4"
+            />
+            <span className="text-xs font-mono font-semibold tracking-[0.24em] uppercase text-[#00ff41]">
               [ CYBER SECURITY SOCIETY ]
             </span>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-mono font-bold text-white mt-4 tracking-tight uppercase">
-              Certificate<span className="text-[#3ce88b]">_</span>Verification
+              Certificate<span className="text-[#00ff41]">_</span>Verification
             </h1>
             <p className="mt-4 text-gray-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
               Verify the authenticity of a Cyber Security Society certificate.
@@ -256,7 +263,7 @@ export default function VerifyCertificatePage() {
                 <>
                   <div className="text-center pt-4">
                     <VerifiedBadge />
-                    <div className="mt-4 font-mono text-sm sm:text-base text-[#3ce88b] font-bold uppercase tracking-[0.18em] row-in">
+                    <div className="mt-4 font-mono text-sm sm:text-base text-[#00ff41] font-bold uppercase tracking-[0.18em] row-in">
                       ✓ Certificate Verified
                     </div>
                     <p className="mt-2 font-mono text-[11px] sm:text-xs text-gray-500 break-words">
@@ -267,7 +274,7 @@ export default function VerifyCertificatePage() {
                   <div className="terminal-frame reveal-scan">
                     <div className="terminal-bar">
                       <span className="truncate">certificate_record.log</span>
-                      <span className="shrink-0 text-[#3ce88b]">Status: Authentic</span>
+                      <span className="shrink-0 text-[#00ff41]">Status: Authentic</span>
                     </div>
                     <div className="py-1">
                       <RecordRow label="ID" value={record?.certificateNumber ?? '—'} delay={0} />
@@ -286,14 +293,14 @@ export default function VerifyCertificatePage() {
                     <span className="shrink-0">Error</span>
                   </div>
                   <div className="p-5 sm:p-7 text-center">
-                    <div className="mx-auto w-16 h-16 border border-[#ff5f56]/70 bg-[#ff5f56]/10 flex items-center justify-center font-mono text-2xl text-[#ff5f56] box-draw">
+                    <div className="mx-auto w-16 h-16 border border-[#ff4d4d]/70 bg-[#ff4d4d]/10 flex items-center justify-center font-mono text-2xl text-[#ff4d4d] box-draw">
                       ✕
                     </div>
-                    <div className="mt-4 font-mono text-sm sm:text-base font-bold uppercase tracking-[0.16em] text-[#ff5f56] subtle-glitch">
+                    <div className="mt-4 font-mono text-sm sm:text-base font-bold uppercase tracking-[0.16em] text-[#ff4d4d] subtle-glitch">
                       Certificate Not Verified
                     </div>
                     <div className="mt-4 mx-auto max-w-md font-mono text-[11.5px] sm:text-xs leading-relaxed text-gray-500 space-y-1 text-left">
-                      <p className="text-[#ff5f56]/80">&gt; MATCH NOT FOUND</p>
+                      <p className="text-[#ff4d4d]/80">&gt; MATCH NOT FOUND</p>
                       <p>
                         The certificate number entered could not be found in the Cyber Security Society
                         certificate registry.
@@ -316,19 +323,19 @@ export default function VerifyCertificatePage() {
             <div className="terminal-frame mt-6">
               <div className="terminal-bar">
                 <span className="truncate">verify_stream.log</span>
-                <span className="shrink-0 text-[#f5c542]">Running</span>
+                <span className="shrink-0 text-[#dfa426]">Running</span>
               </div>
               <div className="p-4 sm:p-5 font-mono text-[11.5px] sm:text-[13px] leading-relaxed text-gray-400 min-h-[120px]">
-                <div className="text-[#3ce88b]">&gt; VERIFYING CERTIFICATE...</div>
+                <div className="text-[#00ff41]">&gt; VERIFYING CERTIFICATE...</div>
                 <div className="mt-2 space-y-1">
                   {logs.map((line) => (
                     <div key={line} className="row-in break-words">
-                      <span className="text-[#22d3ee]">&gt;</span>{' '}
+                      <span className="text-[#00cfff]">&gt;</span>{' '}
                       <span>{typeof line === 'string' ? line : line.text}</span>
                     </div>
                   ))}
                 </div>
-                <div className="caret text-[#3ce88b] mt-1">&gt; </div>
+                <div className="caret text-[#00ff41] mt-1">&gt; </div>
               </div>
             </div>
           )}
@@ -341,11 +348,11 @@ export default function VerifyCertificatePage() {
               </div>
               <div className="p-4 sm:p-5 font-mono text-[11.5px] sm:text-[13px] leading-relaxed text-gray-500">
                 <div>
-                  <span className="text-[#3ce88b]">&gt;</span> Cyber Security Society verification
+                  <span className="text-[#00ff41]">&gt;</span> Cyber Security Society verification
                   terminal ready.
                 </div>
                 <div>
-                  <span className="text-[#3ce88b]">&gt;</span> Awaiting certificate number input
+                  <span className="text-[#00ff41]">&gt;</span> Awaiting certificate number input
                   <span className="caret"></span>
                 </div>
               </div>

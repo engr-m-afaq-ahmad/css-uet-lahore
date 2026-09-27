@@ -48,13 +48,13 @@ export default function EventsPage() {
   useReveal()
 
   return (
-    <div className="pt-16 bg-[#05070a] min-h-screen">
+    <div className="pt-16 bg-[#001a33] min-h-screen">
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div data-reveal className="text-center mb-16">
             <span className="label-tech">// events log</span>
             <h1 className="text-4xl sm:text-5xl font-space font-bold text-white mt-3">
-              Upcoming &amp; <span className="text-[#3ce88b]">Past Events</span>
+              Upcoming &amp; <span className="text-[#00ff41]">Past Events</span>
             </h1>
             <p className="mt-4 text-gray-400 max-w-xl mx-auto">
               Stay updated with our workshops, CTFs, seminars, and community events.
@@ -66,19 +66,26 @@ export default function EventsPage() {
               <div
                 key={event.id}
                 data-reveal
-                className={`p-6 bg-[#0a1116] border flex flex-col ${
-                  event.isUpcoming ? 'border-[#3ce88b]/40 hover:border-[#3ce88b]' : 'border-[#14313a] hover:border-gray-500'
+                className={`terminal-frame flex flex-col ${
+                  event.isUpcoming ? 'hover:border-[#00ff41]/60' : 'hover:border-gray-500'
                 } transition-colors`}
                 style={{ transitionDelay: `${i * 150}ms` }}
               >
+                <div className="terminal-bar">
+                  <span className="truncate">evt_{String(event.id).padStart(2, '0')}.log</span>
+                  <span className={`shrink-0 ${event.isUpcoming ? 'text-[#00ff41]' : 'text-gray-500'}`}>
+                    {event.isUpcoming ? '● scheduled' : '// archived'}
+                  </span>
+                </div>
+                <div className="p-5 sm:p-6 flex flex-col flex-1">
                 <div className="flex items-start justify-between mb-4">
                   <div className={`w-12 h-12 border flex items-center justify-center ${
-                    event.isUpcoming ? 'bg-[#3ce88b]/10 border-[#3ce88b]/30' : 'bg-gray-500/10 border-gray-600/30'
+                    event.isUpcoming ? 'bg-[#00ff41]/10 border-[#00ff41]/30' : 'bg-gray-500/10 border-gray-600/30'
                   }`}>
-                    <i className={`fas ${event.icon} text-lg ${event.isUpcoming ? 'text-[#3ce88b]' : 'text-gray-500'}`}></i>
+                    <i className={`fas ${event.icon} text-lg ${event.isUpcoming ? 'text-[#00ff41]' : 'text-gray-500'}`}></i>
                   </div>
                   {event.isUpcoming && (
-                    <span className="px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#3ce88b] bg-[#3ce88b]/10 border border-[#3ce88b]/40">
+                    <span className="px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#00ff41] bg-[#00ff41]/10 border border-[#00ff41]/40">
                       ● Upcoming
                     </span>
                   )}
@@ -86,22 +93,23 @@ export default function EventsPage() {
 
                 <h3 className="text-white font-space font-bold text-lg mb-1 break-words">{event.title}</h3>
                 <div className="flex items-center gap-2 font-mono text-[11px] text-gray-500 mb-3">
-                  <i className="fas fa-calendar-alt text-[#1f9e60]"></i>
+                  <i className="fas fa-calendar-alt text-[#00cfff]"></i>
                   <span>{event.date}</span>
                 </div>
                 <p className="text-gray-400 text-sm leading-relaxed mb-5 flex-1">{event.desc}</p>
 
-                <div className="pt-3 border-t border-[#14313a]">
+                <div className="pt-3 border-t border-[#0a3a55]">
                   <button
                     disabled={!event.isUpcoming}
                     className={`w-full px-5 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.14em] transition-all ${
                       event.isUpcoming
-                        ? 'bg-[#3ce88b] text-[#04120b] hover:bg-[#63f2a4] cursor-pointer'
-                        : 'bg-[#14313a]/60 text-gray-500 cursor-not-allowed'
+                        ? 'bg-[#00ff41] text-[#001a33] hover:bg-[#4dff6e] cursor-pointer'
+                        : 'bg-[#0a3a55]/60 text-gray-500 cursor-not-allowed'
                     }`}
                   >
                     {event.isUpcoming ? '> Register Now' : '// Past Event'}
                   </button>
+                </div>
                 </div>
               </div>
             ))}

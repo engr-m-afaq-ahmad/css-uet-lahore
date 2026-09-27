@@ -79,16 +79,21 @@ function TeamGrid({ members }) {
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {members.map((m) => (
         <TiltCard key={m.name}>
-          <div className="p-6 bg-[#0a1116] border border-[#14313a] hover:border-[#3ce88b]/30 transition-colors h-full">
-            <div className="w-14 h-14 bg-[#3ce88b]/10 border border-[#3ce88b]/30 flex items-center justify-center mb-4">
-              <i className="fas fa-user-shield text-xl text-[#3ce88b]"></i>
+          <div className="terminal-frame hover:border-[#00ff41]/45 transition-colors h-full flex flex-col">
+            <div className="terminal-bar">
+              <span className="truncate">{m.role}</span>
+              <span className="shrink-0 text-[#00ff41]">● active</span>
             </div>
-            <h4 className="text-white font-space font-bold text-lg">{m.name}</h4>
-            <span className="inline-block mt-2 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-[#3ce88b] bg-[#3ce88b]/10 border border-[#3ce88b]/30 px-2 py-1">[ {m.role} ]</span>
-            <p className="text-gray-400 text-sm mt-3 leading-relaxed">{m.bio}</p>
-            <div className="flex gap-3 mt-4">
-              <a href="#" className="text-gray-500 hover:text-[#3ce88b] transition-colors"><i className="fab fa-linkedin text-lg"></i></a>
-              <a href="#" className="text-gray-500 hover:text-[#3ce88b] transition-colors"><i className="fab fa-github text-lg"></i></a>
+            <div className="p-5 sm:p-6 flex flex-col flex-1">
+              <div className="w-12 h-12 bg-[#00ff41]/10 border border-[#00ff41]/30 flex items-center justify-center mb-4 shrink-0">
+                <i className="fas fa-user-shield text-lg text-[#00ff41]"></i>
+              </div>
+              <h4 className="text-white font-space font-bold text-lg break-words">{m.name}</h4>
+              <p className="text-gray-400 text-sm mt-3 leading-relaxed flex-1 break-words">{m.bio}</p>
+              <div className="flex gap-4 mt-4 pt-3 border-t border-[#0a3a55]/60">
+                <a href="#" aria-label={`${m.name} LinkedIn`} className="text-gray-500 hover:text-[#00ff41] transition-colors"><i className="fab fa-linkedin text-lg"></i></a>
+                <a href="#" aria-label={`${m.name} GitHub`} className="text-gray-500 hover:text-[#00ff41] transition-colors"><i className="fab fa-github text-lg"></i></a>
+              </div>
             </div>
           </div>
         </TiltCard>
@@ -101,13 +106,13 @@ export default function AboutPage() {
   useReveal()
 
   return (
-    <div className="pt-16 bg-[#05070a] min-h-screen">
+    <div className="pt-16 bg-[#001a33] min-h-screen">
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div data-reveal className="text-center mb-16">
             <span className="label-tech">// about us</span>
             <h1 className="text-4xl sm:text-5xl font-space font-bold text-white mt-3">
-              Our <span className="text-[#3ce88b]">Mission</span>
+              Our <span className="text-[#00ff41]">Mission</span>
             </h1>
             <p className="mt-4 text-gray-400 max-w-2xl mx-auto">
               Cultivating a community of ethical hackers and cybersecurity enthusiasts at UET Lahore.
@@ -119,19 +124,25 @@ export default function AboutPage() {
               { icon: 'fa-bullseye', title: 'Our Mission', desc: 'To cultivate a community of ethical hackers and cybersecurity enthusiasts at UET Lahore, equipped with cutting-edge knowledge, practical skills, and a strong sense of digital responsibility.' },
               { icon: 'fa-binoculars', title: 'Our Vision', desc: 'A digitally resilient Pakistan where every student is empowered with cybersecurity awareness and skills to protect our digital future.' },
             ].map((item, i) => (
-              <div key={item.title} data-reveal className="p-8 bg-[#0a1116] border border-[#14313a] hover:border-[#3ce88b]/30 transition-colors" style={{ transitionDelay: `${i * 200}ms` }}>
-                <div className="w-12 h-12 bg-[#3ce88b]/10 border border-[#3ce88b]/30 flex items-center justify-center mb-5">
-                  <i className={`fas ${item.icon} text-lg text-[#3ce88b]`}></i>
+              <div key={item.title} data-reveal className="terminal-frame hover:border-[#00ff41]/45 transition-colors" style={{ transitionDelay: `${i * 200}ms` }}>
+                <div className="terminal-bar">
+                  <span className="truncate">{item.title}</span>
+                  <span className="shrink-0 text-[#00ff41]">● ok</span>
                 </div>
-                <h3 className="text-white font-space font-bold text-xl mb-3">{item.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{item.desc}</p>
+                <div className="p-6 sm:p-8">
+                  <div className="w-12 h-12 bg-[#00ff41]/10 border border-[#00ff41]/30 flex items-center justify-center mb-5">
+                    <i className={`fas ${item.icon} text-lg text-[#00ff41]`}></i>
+                  </div>
+                  <h3 className="text-white font-space font-bold text-xl mb-3">{item.title}</h3>
+                  <p className="text-gray-400 leading-relaxed">{item.desc}</p>
+                </div>
               </div>
             ))}
           </div>
 
           <div data-reveal className="mb-16">
             <h3 className="text-center text-2xl font-space font-bold text-white mb-3">
-              Board of <span className="text-[#3ce88b]">Governors</span>
+              Board of <span className="text-[#00ff41]">Governors</span>
             </h3>
             <p className="text-center text-gray-500 text-sm mb-10 max-w-lg mx-auto">
               Our esteemed advisory board guiding the society.
@@ -139,15 +150,15 @@ export default function AboutPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse max-w-lg mx-auto">
                 <thead>
-                  <tr className="border-b-2 border-[#3ce88b]/40">
-                    <th className="py-3 px-4 text-[#3ce88b] font-mono font-bold text-xs uppercase tracking-[0.18em]">Year</th>
-                    <th className="py-3 px-4 text-[#3ce88b] font-mono font-bold text-xs uppercase tracking-[0.18em]">Name</th>
+                  <tr className="border-b-2 border-[#00ff41]/40">
+                    <th className="py-3 px-4 text-[#00ff41] font-mono font-bold text-xs uppercase tracking-[0.18em]">Year</th>
+                    <th className="py-3 px-4 text-[#00ff41] font-mono font-bold text-xs uppercase tracking-[0.18em]">Name</th>
                   </tr>
                 </thead>
                 <tbody>
                   {boardOfGovernors.map((g, i) => (
-                    <tr key={i} className="border-b border-[#14313a]/50 hover:bg-[#0d161c] transition-colors">
-                      <td className="py-3 px-4 font-mono text-[#3ce88b]">{g.year}</td>
+                    <tr key={i} className="border-b border-[#0a3a55]/50 hover:bg-[#00224a] transition-colors">
+                      <td className="py-3 px-4 font-mono text-[#00ff41]">{g.year}</td>
                       <td className="py-3 px-4 text-white font-medium">{g.name}</td>
                     </tr>
                   ))}
@@ -158,7 +169,7 @@ export default function AboutPage() {
 
           <div data-reveal className="mb-16">
             <h3 className="text-center text-2xl font-space font-bold text-white mb-3">
-              <span className="text-[#3ce88b]">Core Body</span>
+              <span className="text-[#00ff41]">Core Body</span>
             </h3>
             <p className="text-center text-gray-500 text-sm mb-10 max-w-lg mx-auto">
               The leadership team driving the society's vision and strategic direction.
@@ -168,7 +179,7 @@ export default function AboutPage() {
 
           <div data-reveal className="mb-16">
             <h3 className="text-center text-2xl font-space font-bold text-white mb-3">
-              Executive Body — <span className="text-[#3ce88b]">Tech Teams</span>
+              Executive Body — <span className="text-[#00ff41]">Tech Teams</span>
             </h3>
             <p className="text-center text-gray-500 text-sm mb-10 max-w-lg mx-auto">
               The technical backbone — CTFs, labs, workshops, and security research.
@@ -178,7 +189,7 @@ export default function AboutPage() {
 
           <div data-reveal>
             <h3 className="text-center text-2xl font-space font-bold text-white mb-3">
-              Executive Body — <span className="text-[#3ce88b]">Non-Tech Teams</span>
+              Executive Body — <span className="text-[#00ff41]">Non-Tech Teams</span>
             </h3>
             <p className="text-center text-gray-500 text-sm mb-10 max-w-lg mx-auto">
               Outreach, events, content, finance — the engine behind our community.

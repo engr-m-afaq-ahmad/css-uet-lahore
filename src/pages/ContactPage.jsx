@@ -20,13 +20,13 @@ export default function ContactPage() {
   useReveal()
 
   return (
-    <div className="pt-16 bg-[#05070a] min-h-screen">
+    <div className="pt-16 bg-[#001a33] min-h-screen">
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div data-reveal className="text-center mb-16">
             <span className="label-tech">// open channel</span>
             <h1 className="text-4xl sm:text-5xl font-space font-bold text-white mt-3">
-              Get In <span className="text-[#3ce88b]">Touch</span>
+              Get In <span className="text-[#00ff41]">Touch</span>
             </h1>
             <p className="mt-4 text-gray-400 max-w-xl mx-auto">
               Have a question, want to collaborate, or interested in joining? Reach out to us.
@@ -75,18 +75,22 @@ export default function ContactPage() {
 
             <div data-reveal className="space-y-6">
               <div className="terminal-frame p-6">
+                <div className="terminal-bar -mx-6 -mt-6 mb-5">
+                  <span className="truncate">contact_channels.cfg</span>
+                  <span className="shrink-0 text-[#00ff41]">● open</span>
+                </div>
                 <div className="flex items-center gap-4 mb-5">
-                  <div className="w-12 h-12 bg-[#3ce88b]/10 border border-[#3ce88b]/30 flex items-center justify-center flex-shrink-0">
-                    <i className="fas fa-envelope text-lg text-[#3ce88b]"></i>
+                  <div className="w-12 h-12 bg-[#00ff41]/10 border border-[#00ff41]/30 flex items-center justify-center flex-shrink-0">
+                    <i className="fas fa-envelope text-lg text-[#00ff41]"></i>
                   </div>
                   <div>
                     <p className="text-white font-semibold text-sm">Email Us</p>
-                    <a href="mailto:css@uet.edu.pk" className="text-gray-400 hover:text-[#3ce88b] transition-colors">css@uet.edu.pk</a>
+                    <a href="mailto:css@uet.edu.pk" className="text-gray-400 hover:text-[#00ff41] transition-colors">css@uet.edu.pk</a>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-[#3ce88b]/10 border border-[#3ce88b]/30 flex items-center justify-center flex-shrink-0">
-                    <i className="fas fa-location-dot text-lg text-[#3ce88b]"></i>
+                  <div className="w-12 h-12 bg-[#00ff41]/10 border border-[#00ff41]/30 flex items-center justify-center flex-shrink-0">
+                    <i className="fas fa-location-dot text-lg text-[#00ff41]"></i>
                   </div>
                   <div>
                     <p className="text-white font-semibold text-sm">Visit Us</p>
@@ -96,7 +100,10 @@ export default function ContactPage() {
               </div>
 
               <div className="terminal-frame p-6">
-                <p className="label-tech mb-4">Follow us</p>
+                <div className="terminal-bar -mx-6 -mt-6 mb-5">
+                  <span className="truncate">Follow Us</span>
+                  <span className="shrink-0 text-[#00ff41]">● 05</span>
+                </div>
                 <div className="flex gap-3">
                   {[
                     { icon: 'fa-discord', href: '#' },
@@ -110,7 +117,7 @@ export default function ContactPage() {
                       href={s.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-11 h-11 bg-[#05070a] border border-[#14313a] flex items-center justify-center text-gray-500 hover:text-[#3ce88b] hover:border-[#3ce88b]/40 transition-colors"
+                      className="w-11 h-11 bg-[#001a33] border border-[#0a3a55] flex items-center justify-center text-gray-500 hover:text-[#00ff41] hover:border-[#00ff41]/40 transition-colors"
                     >
                       <i className={`fab ${s.icon}`}></i>
                     </a>
@@ -119,10 +126,18 @@ export default function ContactPage() {
               </div>
 
               <div className="terminal-frame p-6">
+                <div className="terminal-bar -mx-6 -mt-6 mb-5">
+                  <span className="truncate">society.id</span>
+                  <span className="shrink-0 text-[#00ff41]">● verified</span>
+                </div>
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="w-8 h-8 bg-[#3ce88b] flex items-center justify-center">
-                    <i className="fas fa-shield-halved text-[#04120b] text-xs"></i>
-                  </span>
+                  <img
+                    src="/logo-sm.png"
+                    alt="Cyber Security Society emblem"
+                    width="44"
+                    height="44"
+                    className="w-11 h-11 object-cover border border-[#00cfff]/50"
+                  />
                   <span className="text-white font-mono font-bold text-lg tracking-[0.06em]">CSS::UET</span>
                 </div>
                 <p className="text-gray-500 text-sm leading-relaxed">

@@ -22,7 +22,7 @@ function ScrollToTop() {
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="relative min-h-screen bg-[#05070a] text-white font-inter overflow-x-hidden">
+      <div className="relative min-h-screen bg-[#001a33] text-white font-inter overflow-x-hidden">
         <Loader />
         <ScrollToTop />
 

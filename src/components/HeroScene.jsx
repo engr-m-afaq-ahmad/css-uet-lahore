@@ -17,20 +17,20 @@ export default function HeroScene({ containerRef }) {
     renderer.setSize(container.clientWidth, container.clientHeight)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
-    const ambientLight = new THREE.AmbientLight(0x222244)
+    const ambientLight = new THREE.AmbientLight(0x0a2a4a)
     scene.add(ambientLight)
-    const dirLight = new THREE.DirectionalLight(0x00ffff, 2)
+    const dirLight = new THREE.DirectionalLight(0x00cfff, 2)
     dirLight.position.set(2, 3, 4)
     scene.add(dirLight)
-    const dirLight2 = new THREE.DirectionalLight(0x00ff88, 1)
+    const dirLight2 = new THREE.DirectionalLight(0x00ff41, 1)
     dirLight2.position.set(-3, -1, 2)
     scene.add(dirLight2)
 
     const shieldGroup = new THREE.Group()
     const shieldGeo = new THREE.OctahedronGeometry(1.4, 0)
     const shieldMat = new THREE.MeshPhongMaterial({
-      color: 0x00ddff,
-      emissive: 0x004466,
+      color: 0x00cfff,
+      emissive: 0x002a4d,
       emissiveIntensity: 0.3,
       shininess: 60,
     })
@@ -38,7 +38,7 @@ export default function HeroScene({ containerRef }) {
     shieldGroup.add(shield)
 
     const wireframeMat = new THREE.MeshBasicMaterial({
-      color: 0x00ffaa,
+      color: 0x00ff41,
       wireframe: true,
       transparent: true,
       opacity: 0.25,
@@ -48,12 +48,12 @@ export default function HeroScene({ containerRef }) {
     shieldGroup.add(wireframe)
 
     const ringGeo = new THREE.TorusGeometry(1.8, 0.03, 12, 32)
-    const ringMat = new THREE.MeshBasicMaterial({ color: 0x00ddff, transparent: true, opacity: 0.35 })
+    const ringMat = new THREE.MeshBasicMaterial({ color: 0x00cfff, transparent: true, opacity: 0.35 })
     const ring = new THREE.Mesh(ringGeo, ringMat)
     ring.rotation.x = Math.PI / 2
     shieldGroup.add(ring)
     const ring2 = new THREE.Mesh(new THREE.TorusGeometry(2, 0.02, 8, 32), ringMat.clone())
-    ring2.material.color.setHex(0x00ff88)
+    ring2.material.color.setHex(0x00ff41)
     ring2.rotation.z = Math.PI / 3
     ring2.rotation.x = Math.PI / 3
     shieldGroup.add(ring2)
@@ -66,7 +66,7 @@ export default function HeroScene({ containerRef }) {
     particlesGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3))
     const particles = new THREE.Points(
       particlesGeo,
-      new THREE.PointsMaterial({ color: 0x00ccff, size: 0.04, transparent: true, opacity: 0.5, blending: THREE.AdditiveBlending })
+      new THREE.PointsMaterial({ color: 0x00cfff, size: 0.04, transparent: true, opacity: 0.5, blending: THREE.AdditiveBlending })
     )
     scene.add(particles)
 
@@ -74,7 +74,7 @@ export default function HeroScene({ containerRef }) {
     for (let i = 0; i < 12; i++) {
       const s = new THREE.Mesh(
         new THREE.BoxGeometry(0.12, 0.12, 0.12),
-        new THREE.MeshBasicMaterial({ color: 0x00ffaa, wireframe: true, transparent: true, opacity: 0.15 + Math.random() * 0.2 })
+        new THREE.MeshBasicMaterial({ color: 0x00ff41, wireframe: true, transparent: true, opacity: 0.15 + Math.random() * 0.2 })
       )
       s.position.set((Math.random() - 0.5) * 12, (Math.random() - 0.5) * 8, (Math.random() - 0.5) * 6 - 3)
       s.userData = { speed: 0.2 + Math.random() * 0.3, rotSpeed: 0.005 + Math.random() * 0.015 }
