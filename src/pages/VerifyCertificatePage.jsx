@@ -280,7 +280,7 @@ export default function VerifyCertificatePage() {
                       <RecordRow label="ID" value={record?.certificateNumber ?? '—'} delay={0} />
                       <RecordRow label="Name" value={record?.name ?? '—'} delay={70} />
                       <RecordRow label="Type" value={record?.certificateType ?? '—'} delay={140} />
-                      <RecordRow label="Type" value={record?.mentor ?? '—'} delay={140} />
+                      <RecordRow label="Mentor" value={record?.mentor ?? '—'} delay={140} />
                       <RecordRow label="Event" value={record?.event ?? '—'} delay={210} />
                       <RecordRow label="Issued" value={formatIssueDate(record?.issueDate)} delay={280} />
                       <RecordRow label="Status" value="✓ VERIFIED" highlight delay={350} />
